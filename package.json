@@ -1,0 +1,20 @@
+{
+  "name": "@ginpei/http",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ginpei/http.git"
+  },
+  "keywords": [],
+  "author": "Ginpei",
+  "license": "none",
+  "bugs": {
+    "url": "https://github.com/ginpei/http/issues"
+  },
+  "homepage": "https://github.com/ginpei/http#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
