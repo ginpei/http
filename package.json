@@ -1,7 +1,7 @@
 {
   "name": "@ginpei/http",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple web server for preview",
   "main": "index.js",
   "repository": {
     "type": "git",
