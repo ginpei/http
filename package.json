@@ -1,6 +1,6 @@
 {
   "name": "@ginpei/http",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "Simple web server for preview",
   "main": "index.js",
   "bin": "index.js",
