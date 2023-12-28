@@ -2,7 +2,7 @@
 const express = require('express');
 const expressWs = require('express-ws');
 const fs = require('fs');
-const { getInjectionHtml, readStaticHtml, isHtmlRequest } = require('./lib/liveReload');
+const { getInjectionHtml, readStaticHtml, isHtmlRequest, watch } = require('./lib/liveReload');
 
 const port = process.env.PORT || 3000;
 const filePath = '.';
@@ -11,7 +11,7 @@ const app = express();
 expressWs(app);
 
 app.ws('/liveReload', function(ws) {
-  fs.watch(filePath, () => {
+  watch(filePath, () => {
     ws.send('changed');
   });
 });
