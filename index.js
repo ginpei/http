@@ -2,6 +2,7 @@
 const express = require('express');
 const expressWs = require('express-ws');
 const fs = require('fs');
+const { getInjectionHtml, readStaticHtml, isHtmlRequest } = require('./lib/liveReload');
 
 const port = process.env.PORT || 3000;
 const filePath = '.';
@@ -13,6 +14,18 @@ app.ws('/liveReload', function(ws) {
   fs.watch(filePath, () => {
     ws.send('changed');
   });
+});
+
+app.all('*', (req, res, next) => {
+  if (!isHtmlRequest(req)) {
+    next();
+    return;
+  }
+
+  const original = readStaticHtml(__dirname, req.path);
+  const injection = getInjectionHtml();
+  const modified = `${original}\n${injection}`;
+  res.send(modified);
 });
 
 app.use(express.static(filePath)); // working dir
