@@ -16,6 +16,15 @@
   },
   "homepage": "https://github.com/ginpei/http#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "@types/express-ws": "^3.0.4",
+    "chokidar": "^3.5.3",
+    "express": "^4.18.2",
+    "express-ws": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "scripts": {
+    "dev": "nodemon index.js"
   }
 }

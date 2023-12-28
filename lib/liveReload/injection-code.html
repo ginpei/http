@@ -1,0 +1,20 @@
+<script data-npm-package="@ginpei/http">
+  (() => {
+    const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const { host } = location; // e.g. "localhost:3000"
+    const path = '/liveReload';
+    const url = `${protocol}//${host}${path}`
+  
+    const ws = new WebSocket(url);
+  
+    ws.onmessage = (e) => {
+      if (e.data === 'changed') {
+        location.reload();
+      }
+    };
+
+    ws.onerror = (event) => {
+      console.error('[LiveReload] WS error', event);
+    };
+  })();
+</script>
