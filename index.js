@@ -22,7 +22,7 @@ app.all('*', (req, res, next) => {
     return;
   }
 
-  const original = readStaticHtml(__dirname, req.path);
+  const original = readStaticHtml(filePath, req.path);
   const injection = getInjectionHtml();
   const modified = `${original}\n${injection}`;
   res.send(modified);
