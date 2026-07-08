@@ -19,7 +19,11 @@
     "@types/express-ws": "^3.0.4",
     "chokidar": "^3.5.3",
     "express": "^4.18.2",
-    "express-ws": "^5.0.2"
+    "express-ws": "^5.0.2",
+    "github-markdown-css": "^5.9.0",
+    "highlight.js": "^11.11.1",
+    "marked": "^18.0.5",
+    "marked-highlight": "^2.2.4"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

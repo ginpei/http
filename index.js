@@ -4,6 +4,7 @@ const expressWs = require('express-ws');
 const fs = require('fs');
 const path = require('path');
 const { getInjectionHtml, readStaticHtml, isHtmlRequest, watch } = require('./lib/liveReload');
+const { isMarkdownRequest, renderMarkdownHtml } = require('./lib/markdown');
 
 const port = process.env.PORT || 3000;
 const cwd = path.resolve('.');
@@ -18,6 +19,14 @@ app.ws('/liveReload', function(ws) {
 });
 
 app.all('*', (req, res, next) => {
+  if (isMarkdownRequest(req)) {
+    const original = renderMarkdownHtml(cwd, req.path);
+    const injection = getInjectionHtml();
+    const modified = `${original}\n${injection}`;
+    res.send(modified);
+    return;
+  }
+
   if (!isHtmlRequest(req)) {
     next();
     return;
