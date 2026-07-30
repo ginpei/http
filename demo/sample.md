@@ -16,5 +16,11 @@ void greet(char* name) {
 }
 ```
 
+```mermaid
+flowchart LR
+  A[Markdown] --> B[HTML]
+  B --> C[Diagram]
+```
+
 - item 1
 - item 2

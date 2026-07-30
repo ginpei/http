@@ -4,6 +4,8 @@
 
 A quick HTTP server.
 
+Markdown files support syntax-highlighted code blocks and Mermaid diagrams.
+
 ```console
 $ cd path/to/files
 $ npx @ginpei/http

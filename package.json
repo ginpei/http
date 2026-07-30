@@ -23,7 +23,8 @@
     "github-markdown-css": "^5.9.0",
     "highlight.js": "^11.11.1",
     "marked": "^18.0.5",
-    "marked-highlight": "^2.2.4"
+    "marked-highlight": "^2.2.4",
+    "mermaid": "^11.16.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

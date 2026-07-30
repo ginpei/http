@@ -8,9 +8,12 @@ const { isMarkdownRequest, renderMarkdownHtml } = require('./lib/markdown');
 
 const port = process.env.PORT || 3000;
 const cwd = path.resolve('.');
+const mermaidDist = path.dirname(require.resolve('mermaid'));
 
 const app = express();
 expressWs(app);
+
+app.use('/_http/mermaid', express.static(mermaidDist));
 
 app.ws('/liveReload', function(ws) {
   watch(cwd, () => {
