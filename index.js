@@ -9,11 +9,25 @@ const { isMarkdownRequest, renderMarkdownHtml } = require('./lib/markdown');
 const port = process.env.PORT || 3000;
 const cwd = path.resolve('.');
 const mermaidDist = path.dirname(require.resolve('mermaid'));
+const corsEnabled = process.argv.includes('--cors');
 
 const app = express();
 expressWs(app);
 
 app.use('/_http/mermaid', express.static(mermaidDist));
+
+if (corsEnabled) {
+  app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(204);
+      return;
+    }
+    next();
+  });
+}
 
 app.ws('/liveReload', function(ws) {
   watch(cwd, () => {
@@ -66,4 +80,7 @@ app.use(express.static(cwd)); // working dir
 app.listen(port, () => {
   console.log(`Current working directory: ${cwd}`);
   console.log(`End point: http://localhost:${port}/`);
+  if (corsEnabled) {
+    console.log('CORS: enabled (Access-Control-Allow-Origin: *)');
+  }
 });
