@@ -9,7 +9,7 @@ const { isMarkdownRequest, renderMarkdownHtml } = require('./lib/markdown');
 const port = process.env.PORT || 3000;
 const cwd = path.resolve('.');
 const mermaidDist = path.dirname(require.resolve('mermaid'));
-const corsEnabled = process.argv.includes('--cors') || process.argv.includes('--cross-origin');
+const corsEnabled = process.argv.includes('--cors');
 
 const app = express();
 expressWs(app);
