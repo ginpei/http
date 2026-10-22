@@ -19,7 +19,14 @@ You can specify port by `PORT`:
 $ PORT=8000 npx @ginpei/http
 ```
 
+## Teapot
+
+Use `--teapot` to respond to every HTTP request with `418 I'm a Teapot`, instead of serving files:
+
+```console
+$ npx @ginpei/http --teapot
+```
+
 ## Markdown
 
 If the path ends `.md`, it renders as a markdown file. It supports syntax-highlighted code blocks and Mermaid diagrams.
-
