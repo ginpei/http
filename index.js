@@ -35,7 +35,7 @@ if (corsEnabled) {
   });
 }
 
-app.ws('/liveReload', function(ws) {
+app.ws('/liveReload', function (ws) {
   watch(cwd, () => {
     ws.send('changed');
   });
