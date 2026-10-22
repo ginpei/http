@@ -85,8 +85,8 @@ app.use(express.static(cwd)); // working dir
 
 app.listen(port, () => {
   console.log(`Current working directory: ${teapotEnabled ? 'teapot' : cwd}`);
-  console.log(`End point: http://localhost:${port}/`);
   if (corsEnabled) {
     console.log('CORS: enabled (Access-Control-Allow-Origin: *)');
   }
+  console.log(`End point: http://localhost:${port}/`);
 });
